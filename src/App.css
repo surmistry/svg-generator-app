@@ -1,0 +1,66 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+.body-inputs__container {
+  display: grid;
+  grid-template-areas:
+  'left-col right-col'
+  'left-col right-col'
+  'left-col right-col'
+  }
+
+.inputs__left-col {
+  grid-area: left-col;
+}
+.inputs__right-col {
+  grid-area: right-col;
+}
+
+div.input {
+  padding: 15px;
+}
+
+div.app-body {
+  margin: 0px 20px;
+}
+
+div.input.error{
+  padding: 14px;
+  border: 1px solid red;
+  
+}
+
+input.input {
+  /* width: 54px; */
+}
+
+.input > label {
+  display: grid;
+  grid-auto-columns: 1fr 2fr;
+}
+
+span.input-label { grid-column: 1;}
+.input > label > input { grid-column: 2;}
