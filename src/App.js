@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Input from './lib/form/input';
 import svgGenerator from 'svg-generator';
+import CanvasContainer from './lib/canvas';
 import './App.css';
 
 const defaultState = {
@@ -156,6 +157,8 @@ class App extends Component {
             </div>
           </div>
         </div>
+
+        <CanvasContainer imageData={this.state.imageData} />
 
       </div>
     );
