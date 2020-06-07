@@ -1,13 +1,38 @@
 import React, { Component } from 'react';
 import Input from './lib/form/input';
+import svgGenerator from 'svg-generator';
 import './App.css';
+
+const defaultState = {
+  start: 'fa6400',
+  end: '3503fc',
+  width: 100,
+  height: 80,
+  shapeSize: 3,
+  noise: 15,
+};
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { errors: {}, };
+    this.state = {
+      form: defaultState,
+      errors: {},
+    };
+  } e
+
+  submitState = () => {
+    const { start, end, ...formParams } = this.state.form;
+    const svgParams = {
+      ...formParams,
+      colors: { startColor: start, endColor: end }
+    }
+    const imageData = svgGenerator.hexagon(svgParams);
+    console.log(svgParams)
+    this.setState({ imageData });
   }
 
+  resetState = () => this.setState({ errors: {}, form: defaultState })
 
   validateHexCode = (value) => {
     const HEX_CODE_REGEXP = /^(#)?[0-9a-fA-F]{6,8}$/;
@@ -61,8 +86,7 @@ class App extends Component {
     return false
   }
   render() {
-    const { errors, ...valuesChecked } = this.state;
-    console.log(this.state.errors)
+    const { errors, form, ...valuesChecked } = this.state;
     return (
       <div className="App">
         <div className="App-header">
@@ -79,52 +103,59 @@ class App extends Component {
             <div className="inputs__left-col">
               < Input
                 label={"Start"}
-                onChangeHandler={(e) => this.handleColorChange(e, 'startInput')}
-                error={errors.startInput}
+                onChangeHandler={(e) => this.handleColorChange(e, 'start')}
+                error={errors.start}
+                value={form.start}
                 class="input"
               />
               < Input
                 label={"End"}
-                onChangeHandler={(e) => this.handleColorChange(e, 'endInput')}
-                error={errors.endInput}
+                onChangeHandler={(e) => this.handleColorChange(e, 'end')}
+                error={errors.end}
+                value={form.end}
                 class="input" />
             </div>
             <div className="inputs__right-col">
               < Input
                 label={"Canvas width:"}
-                onChangeHandler={(e) => this.handleShapeChange(e, 'canvasWidth')}
-                error={errors.canvasWidth}
+                onChangeHandler={(e) => this.handleShapeChange(e, 'width')}
+                error={errors.width}
+                value={form.width}
                 class="input"
               />
               < Input
                 label={"Canvas height:"}
-                onChangeHandler={(e) => this.handleShapeChange(e, 'canvasHeight')}
-                error={errors.canvasHeight}
+                onChangeHandler={(e) => this.handleShapeChange(e, 'height')}
+                error={errors.height}
+                value={form.height}
                 class="input"
               />
               < Input
                 label={"Shape Size:"}
                 onChangeHandler={(e) => this.handleShapeChange(e, 'shapeSize')}
                 error={errors.shapeSize}
+                value={form.shapeSize}
                 class="input"
               />
               < Input
                 label={"Noise:"}
                 onChangeHandler={(e) => this.handleShapeChange(e, 'noise')}
                 error={errors.noise}
+                value={form.noise}
                 class="input"
               />
             </div>
             <div className="submit-button">
-              <button className="submit-btn" type="submit" disabled={errors.all}>
+              <button className="submit-btn" type="submit" onClick={(e) => this.submitState()} disabled={errors.all}>
 
                 Submit
+              </button>
+              <button className="reset-btn" type="submit" onClick={() => this.resetState()}>
+                Reset
               </button>
             </div>
           </div>
         </div>
-
-
 
       </div>
     );
