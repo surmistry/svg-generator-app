@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Input from './lib/form/input';
 import svgGenerator from 'svg-generator';
-import CanvasContainer from './lib/canvas';
+
 import './App.css';
+import convertData from './lib/io';
+import CanvasContainer from './lib/canvas';
+import Input from './lib/form/input';
 
 const defaultState = {
   start: 'fa6400',
@@ -20,7 +22,11 @@ class App extends Component {
       form: defaultState,
       errors: {},
     };
-  } e
+  }
+
+  saveFile = () => {
+
+  }
 
   submitState = () => {
     const { start, end, ...formParams } = this.state.form;
@@ -42,9 +48,7 @@ class App extends Component {
 
   validateNumbers = (input) => /^[0-9]*$/.test(input);
 
-  updateStateWithErrors = (target, value, valueValidated) => {
-
-  }
+  // updateStateWithErrors = (target, value, valueValidated) => {}
 
   handleColorChange = (e, target) => {
     let { form, errors } = this.state;
@@ -147,12 +151,15 @@ class App extends Component {
               />
             </div>
             <div className="submit-button">
-              <button className="submit-btn" type="submit" onClick={(e) => this.submitState()} disabled={errors.all}>
+              <button className="btn" type="submit" onClick={(e) => this.submitState()} disabled={errors.all}>
 
                 Submit
               </button>
-              <button className="reset-btn" type="submit" onClick={() => this.resetState()}>
+              <button className="btn" type="submit" onClick={() => this.resetState()}>
                 Reset
+              </button>
+              <button className="btn" type="submit" onClick={() => this.saveFile()}>
+                Save
               </button>
             </div>
           </div>

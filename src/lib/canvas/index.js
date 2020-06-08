@@ -19,7 +19,6 @@ class Canvas extends Component {
   render() {
     console.log(this);
     return (
-
       <div className="canvas-container">
         {this.props.imageData ? this.loadSvgTemplate() : ''}
       </div>

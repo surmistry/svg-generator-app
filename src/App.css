@@ -23,13 +23,29 @@
   to { transform: rotate(360deg); }
 }
 
+.app-body {
+  width: 70%;
+  margin: 20px auto;
+  background: #ffffff55;
+  border-radius: 11px;
+  padding: 13px;
+}
+
+svg {
+  position: absolute;
+  top: 190px;
+  left: 0;
+  z-index: -1;
+}
 
 .body-inputs__container {
   display: grid;
   grid-template-areas:
   'left-col right-col'
   'left-col right-col'
-  'left-col right-col'
+  'left-col right-col';
+
+  grid-auto-columns: 1fr 1fr;
   }
 
 .inputs__left-col {
@@ -41,10 +57,6 @@
 
 div.input {
   padding: 15px;
-}
-
-div.app-body {
-  margin: 0px 20px;
 }
 
 div.input.error{
@@ -60,7 +72,23 @@ input.input {
 .input > label {
   display: grid;
   grid-auto-columns: 1fr 2fr;
+  background: #fff6;
+  border: 2px solid #ccc;
+  border-radius: 5px;
 }
 
-span.input-label { grid-column: 1;}
-.input > label > input { grid-column: 2;}
+span.input-label {
+  grid-column: 1;
+  width: 100%;
+  padding: 12px;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px 0 0 4px;
+  resize: vertical;
+  
+}
+.input > label > input {
+  grid-column: 2;
+  border: 1px #ccc;
+  border-left-style: solid;
+  border-radius: 0 5px 5px 0;
+}
