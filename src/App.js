@@ -102,7 +102,7 @@ class App extends Component {
         <div className="app-body">
 
           <p className="app-body__tag-line">
-            To get started, select any of the following inputs and press generate
+            Start by pressing submit to see the default configurations.
           </p>
           <div className="body-inputs__container">
             <div className="inputs__left-col">
@@ -122,21 +122,21 @@ class App extends Component {
             </div>
             <div className="inputs__right-col">
               < Input
-                label={"Canvas width:"}
+                label={"Width:"}
                 onChangeHandler={(e) => this.handleShapeChange(e, 'width')}
                 error={errors.width}
                 value={form.width}
                 class="input"
               />
               < Input
-                label={"Canvas height:"}
+                label={"Height:"}
                 onChangeHandler={(e) => this.handleShapeChange(e, 'height')}
                 error={errors.height}
                 value={form.height}
                 class="input"
               />
               < Input
-                label={"Shape Size:"}
+                label={"Size:"}
                 onChangeHandler={(e) => this.handleShapeChange(e, 'shapeSize')}
                 error={errors.shapeSize}
                 value={form.shapeSize}
