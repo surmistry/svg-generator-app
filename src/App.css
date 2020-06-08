@@ -13,7 +13,7 @@ p#root-variable-store{
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 120px;
   padding: 20px;
   color: white;
 }
@@ -37,7 +37,7 @@ p#root-variable-store{
 
 svg {
   position: absolute;
-  top: 190px;
+  top: 160px;
   left: 0;
   z-index: -1;
 }
@@ -47,7 +47,8 @@ svg {
   grid-template-areas:
   'left-col right-col'
   'left-col right-col'
-  'left-col right-col';
+  'left-col right-col'
+  'submit-col submit-col';
 
   grid-auto-columns: 1fr 1fr;
   }
@@ -78,16 +79,17 @@ div.input.error{
   
 }
 
-input.input {
-  /* width: 54px; */
-}
 
 .input > label {
   display: grid;
   grid-auto-columns: 1fr 2fr;
   background: #fff6;
-  border: 2px solid #ccc;
+  border: 2px solid #888;
   border-radius: 5px;
+}
+.input > label.disabled {
+  background-color: #00000008;
+  color: #0002;
 }
 
 span.input-label {
@@ -100,7 +102,7 @@ span.input-label {
 }
 
 
-.input > label > input:focus { 
+.input > label > input:focus, .input > label > input:hover  { 
   outline: 3px #aaaaaa;
 }
 
@@ -114,6 +116,9 @@ span.input-label {
   font-size: 18px;  
 }
 
+div.submit-button {
+  grid-area: submit-col;
+}
 .btn {
   border: none;
   color: black;
@@ -127,9 +132,70 @@ span.input-label {
   margin: 10px;
 }
 
+.btn:hover {
+  background-color: #e0e0e0;
+}
+
+.btn:disabled:hover{
+  background-color: #ffffff44;;
+}
+
 .btn:focus {
   outline: none;
   margin: 8px;
   border: 2px solid #999999;
+}
+.save-menu {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  border: 2px solid #888;
+  border-radius: 5px;
+  z-index: 1;
+  margin-top: 15px;
+  padding: 6px;
+  outline: none;
+}
+
+
+.save-menu > option {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.btn.save {
+  margin-left: 170px;
 
 }
+@media only screen and (min-width: 635px) and (max-width: 886px) {
+
+.body-inputs__container {
+  display: grid;
+  grid-template-areas:
+  'submit-col'
+  'right-col'
+  'left-col';
+
+  grid-auto-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 634px) {
+
+  .body-inputs__container {
+    display: grid;
+    grid-template-areas:
+    'submit-col'
+    'right-col'
+    'left-col';
+  
+    grid-auto-columns: 1fr;
+    }
+  .btn {
+    padding: 10px 16px;
+    font-size: 12px;
+    margin: 8px;
+  }
+} 
