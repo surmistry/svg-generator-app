@@ -1,4 +1,3 @@
-import svgGenerator from 'svg-generator';
 import btoa from 'btoa';
 
 

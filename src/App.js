@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import svgGenerator from 'svg-generator';
 
 import './App.css';
-import convertData from './lib/io';
 import CanvasContainer from './lib/canvas';
 import Input from './lib/form/input';
 import Save from './lib/form/save';
@@ -113,7 +112,7 @@ class App extends Component {
     return false
   }
   render() {
-    const { errors, form, saving, hidden, ...valuesChecked } = this.state;
+    const { errors, form, saving, hidden, ..._ } = this.state;
     return (
       <div className="App">
         <div className="App-header">
